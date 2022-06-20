@@ -1,19 +1,17 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ItemComponent } from './app/modals/item/item.component';
-import { ConfirmationComponent } from './modals/confirmation/confirmation.component';
+import { ItemComponent } from './modals/item/item.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemComponent,
-    ConfirmationComponent
+    ItemComponent
   ],
   imports: [
-    BrowserModule
-  ],
+    BrowserModule,
+  ], 
   providers: [],
   bootstrap: [AppComponent]
 })
