@@ -1,1 +1,51 @@
-<p>confirmation works!</p>
+<div class="matModal">
+    <div class="matTitle">
+        <h1 mat-dialog-title>View Item</h1>
+    </div>
+    
+    <div mat-dialog-content id="content">
+        <div class="labels">
+            <p>What's Item name</p>
+        </div>
+        <div class="inputfes">
+            <mat-form-field class="inputItems" appearance="fill"> 
+                <input matInput type="text" [(ngModel)]="item.name">
+            </mat-form-field>
+        </div>
+        <div class="labels">
+            <p>What's items Weight</p>
+        </div>
+        <div class="inputfes">
+            <mat-form-field class="inputItems" appearance="fill"> 
+                <input matInput  [(ngModel)]="item.wight">
+            </mat-form-field>
+        </div>
+        
+    </div>
+
+    <div mat-dialog-content id="content">
+        <div class="labels">
+            <p>What's items symbol</p>
+        </div>
+        <div class="inputfes">
+            <mat-form-field class="inputItems" appearance="fill"> 
+                <input matInput [(ngModel)]="item.symbol">
+            </mat-form-field>
+        </div>
+        <div class="labels">
+            <p>What's items number</p>
+        </div>
+        <div class="inputfes">
+            <mat-form-field class="inputItems" appearance="fill"> 
+                <input matInput [(ngModel)]="item.no">
+            </mat-form-field>
+        </div>
+        
+    </div>
+    
+    <div mat-dialog-actions class="placeBot">
+        <button mat-button class="btn btn-secondary" (click)="onNoClick()">Cancel</button>
+        <button mat-button class="btn btn-secondary" id="btnSec"  (click)="editItem()" cdkFocusInitial>Edit</button>
+    </div>
+
+</div>
