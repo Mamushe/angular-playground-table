@@ -3,6 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ItemServiceService } from 'src/app/services/item-service.service';
 import { Item } from 'src/app/models/Item';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -20,7 +21,8 @@ export class ConfirmationComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmationComponent>,
-    private itemService: ItemServiceService
+    private itemService: ItemServiceService,
+    private dataService: DataService
   ) {}
   
   ngOnInit(): void {
@@ -32,7 +34,8 @@ export class ConfirmationComponent implements OnInit {
   }
 
   editItem(){
-
+    this.dataService.setPeriodicElement(this.item)
+    this.onNoClick()
   }
 
 }
