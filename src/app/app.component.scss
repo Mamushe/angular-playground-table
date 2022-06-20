@@ -9,7 +9,7 @@ nav{
     background-color: #333;
     position: fixed;
     top: 0;
-    width: 99%;
+    width: 100%;
     ul{
         text-align: center;
         list-style-type: none;
@@ -32,8 +32,9 @@ nav{
     }
 }
 #navigation-bar{
-    margin-bottom: 51px;
+    margin-bottom: 81px;
 }
 .content{
-    text-align: center;
-}
+    display: flex;
+    justify-content: center; 
+}   
