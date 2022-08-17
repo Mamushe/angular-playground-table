@@ -38,10 +38,10 @@ export class ItemComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private itemService: ItemServiceService, private dataService: DataService) {}
 
-   ngOnInit(): void{ 
+   async ngOnInit(): Promise<void>{ 
       this.runFilter();
       this.changePage(1);
-  }
+   }
 
   async changePage(e: any){
     this.dataSource =  this.displaydata;
