@@ -4,11 +4,20 @@ import { ItemServiceService } from 'src/app/services/item-service.service';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 import { Item } from 'src/app/models/Item';
 import { DataService, PeriodicElement } from 'src/app/services/data.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  styleUrls: ['./item.component.scss'],
+  animations: [
+    trigger('detailExpandDiv', [
+      state('collapsed', style({ height: '0px', minHeight: '0'})),
+      state('void', style({ height: '0px', minHeight: '0'})),
+      state('expanded', style({ height: '20px' })),
+      // transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]
 })
 export class ItemComponent implements OnInit {
 

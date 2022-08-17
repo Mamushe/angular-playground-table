@@ -11,3 +11,11 @@
 .searchBar{
     width: 500px;
 }
+tr.invoice-detail-row {
+    height: 0;
+}
+
+.invoice-element-detail{
+    overflow: hidden;
+    display: flex;
+}
