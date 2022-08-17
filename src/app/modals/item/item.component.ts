@@ -33,12 +33,12 @@ export class ItemComponent implements OnInit {
   };
 
   filter = '';
+  filterFields = ['name', 'weight', 'symbol']
   displaydata = [];
 
   constructor(public dialog: MatDialog, private itemService: ItemServiceService, private dataService: DataService) {}
 
-   ngOnInit(): void{
-      // this.dataSource = [...this.dataService.getPeriodicElement()]
+   ngOnInit(): void{ 
       this.runFilter();
       this.changePage(1);
   }
@@ -47,13 +47,13 @@ export class ItemComponent implements OnInit {
     this.dataSource =  this.displaydata;
   }
 
-  runFilter() {
-    console.log("Run filter")
-    this.displaydata = JSON.parse(JSON.stringify([...this.dataService.getPeriodicElement()]));
-    console.log(this.displaydata)
-    // if(this.filter != ''){
-    //   this.displaydata = this.displaydata.filter(d => String(d).includes(String(this.filter)))
-    // }
+  // filter by weight
+  runFilter() { 
+    this.displaydata = JSON.parse(JSON.stringify([...this.dataService.getPeriodicElement()])); 
+    if(this.filter != ''){ 
+      this.displaydata = this.displaydata.filter(d => String(d['weight']).includes(String(this.filter)))
+    }
+    this.changePage(1);
   }
 
   editItem(e: PeriodicElement){
