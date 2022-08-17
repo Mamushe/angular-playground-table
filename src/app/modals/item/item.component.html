@@ -1,7 +1,7 @@
 <div class="example-table mat-elevation-z8">
   <div id="inputField">
       <mat-form-field floatLabel="never" class="searchBar" >
-          <input matInput placeholder="Search">
+          <input type="text" (keyup)="runFilter()" [(ngModel)]="filter" matInput placeholder="Search">
       </mat-form-field>
   </div>
   <table class="example-table mat-elevation-z8" mat-table  [dataSource]="dataSource" multiTemplateDataRows>

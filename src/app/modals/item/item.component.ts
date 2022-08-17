@@ -5,6 +5,7 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
 import { Item } from 'src/app/models/Item';
 import { DataService, PeriodicElement } from 'src/app/services/data.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-item',
@@ -31,10 +32,32 @@ export class ItemComponent implements OnInit {
     name: ''
   };
 
+  filter = '';
+  displaydata = [];
+
   constructor(public dialog: MatDialog, private itemService: ItemServiceService, private dataService: DataService) {}
 
-  ngOnInit(): void {
-      this.dataSource = [...this.dataService.getPeriodicElement()]
+   ngOnInit(): void{
+      // this.dataSource = [...this.dataService.getPeriodicElement()]
+      this.runFilter();
+      this.changePage(1);
+  }
+
+  async changePage(e: any){
+    this.dataSource =  this.displaydata;
+  }
+
+  runFilter() {
+    console.log("Run filter")
+    this.displaydata = JSON.parse(JSON.stringify([...this.dataService.getPeriodicElement()]));
+    console.log(this.displaydata)
+    // if(this.filter != ''){
+    //   this.displaydata = this.displaydata.filter(d => String(d).includes(String(this.filter)))
+    // }
+  }
+
+  editItem(e: PeriodicElement){
+    this.openDialog(e);
   }
 
   openDialog(e: PeriodicElement): void {
@@ -54,10 +77,6 @@ export class ItemComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed'); 
     });
-  }
-
-  editItem(e: PeriodicElement){
-    this.openDialog(e);
   }
 
 }
