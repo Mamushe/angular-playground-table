@@ -7,6 +7,7 @@ import { DataService, PeriodicElement } from 'src/app/services/data.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';
 
+
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -36,6 +37,8 @@ export class ItemComponent implements OnInit {
   filterFields = ['name', 'weight', 'symbol']
   displaydata = [];
 
+  file: any = null;
+
   constructor(public dialog: MatDialog, private itemService: ItemServiceService, private dataService: DataService) {}
 
    async ngOnInit(): Promise<void>{ 
@@ -59,6 +62,12 @@ export class ItemComponent implements OnInit {
   editItem(e: PeriodicElement){
     this.openDialog(e);
   }
+
+  fileBrowse(event: any) {
+    this.file = event?.target.files[0];
+    console.log(this.file)
+  }
+
 
   openDialog(e: PeriodicElement): void {
     

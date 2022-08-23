@@ -1,6 +1,7 @@
 
 .example-table {
     width: 1000px;
+    padding: 10px 10px;
     #inputField{
         display: flex;
         justify-content: center; 
@@ -18,4 +19,21 @@ tr.invoice-detail-row {
 .invoice-element-detail{
     overflow: hidden;
     display: flex;
+}
+.dropZone {
+    width: 450px;
+    height: 100px;
+    padding: 2rem;
+    text-align: center;
+    border: dashed 1px #979797;
+    position: relative;
+    margin: 16px auto;
+    input {
+        // opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
 }
