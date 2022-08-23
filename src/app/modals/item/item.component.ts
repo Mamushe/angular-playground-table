@@ -38,7 +38,10 @@ export class ItemComponent implements OnInit {
   filterFields = ['name', 'weight', 'symbol']
   displaydata = [];
 
+  progress = 0;
   file: any = null;
+
+  displayContent: boolean = true;
 
   constructor(public dialog: MatDialog, private itemService: ItemServiceService, private dataService: DataService) {}
 
@@ -65,13 +68,19 @@ export class ItemComponent implements OnInit {
   }
 
   fileBrowse(event: any) {
+    this.displayContent = false;
     this.file = event?.target.files[0];
     console.log(this.file)
+    setInterval(() => {
+      if(this.progress !== 100) {
+        this.progress += 5;
+      }
+    })
     // this.readFile(this.file.name);
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       console.log(fileReader.result);
-      
+    
       console.log(fileReader.result?.slice(0,5))
     }
     fileReader.readAsText(this.file);

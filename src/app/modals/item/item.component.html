@@ -64,8 +64,20 @@
       </table>
     </div>
     <div class="dropZone">
-      <input type="file" #fileDropRef (change)="fileBrowse($event)" id="fileDropRef" />
-      <span>Drag and drop file here or </span>
-      <span>Browse</span>
+      <div *ngIf="displayContent ;else thisone">
+        <input type="file" #fileDropRef (change)="fileBrowse($event)" id="fileDropRef" />
+        <span>Drag and drop file here or </span>
+        <span>Browse</span>
+      </div>
+      <ng-template #thisone>
+        <span>{{ file.name}}</span>
+        <div class="progress-cont">
+          
+          <div class="progress" [style.width]="progress + '%'">
+          </div>
+        </div>
+      </ng-template>
+      
     </div>
+    
 </div>
