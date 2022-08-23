@@ -6,7 +6,8 @@ import { Item } from 'src/app/models/Item';
 import { DataService, PeriodicElement } from 'src/app/services/data.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';
-
+// import { promises as fsPromises } from 'fs';
+// import { join } from 'path';
 
 @Component({
   selector: 'app-item',
@@ -66,7 +67,16 @@ export class ItemComponent implements OnInit {
   fileBrowse(event: any) {
     this.file = event?.target.files[0];
     console.log(this.file)
+    // this.readFile(this.file.name);
+    let fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      console.log(fileReader.result);
+      
+      console.log(fileReader.result?.slice(0,5))
+    }
+    fileReader.readAsText(this.file);
   }
+ 
 
 
   openDialog(e: PeriodicElement): void {
